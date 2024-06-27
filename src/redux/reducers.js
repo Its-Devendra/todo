@@ -1,13 +1,18 @@
+export const editTask = (updatedTask) => ({
+  type: 'EDIT_TASK',
+  payload: updatedTask,
+});
+
 const initialState = {
   tasks: [],
 };
 
-const rootReducer = (state = initialState, action) => {
+const taskReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'ADD_TASK':
       return {
         ...state,
-        tasks: [...state.tasks, action.payload],
+        tasks: [...state.tasks, { ...action.payload, completed: false }],
       };
     case 'DELETE_TASK':
       return {
@@ -15,18 +20,22 @@ const rootReducer = (state = initialState, action) => {
         tasks: state.tasks.filter((_, index) => index !== action.payload),
       };
     case 'EDIT_TASK':
-      const editedTasks = [...state.tasks];
-      const editedTask = prompt("Edit your task", editedTasks[action.payload]);
-      if (editedTask !== null) {
-        editedTasks[action.payload] = editedTask;
-      }
       return {
         ...state,
-        tasks: editedTasks,
+        tasks: state.tasks.map(task =>
+          task.id === action.payload.id ? { ...task, ...action.payload } : task
+        ),
+      };  
+      case 'TOGGLE_TASK':
+      return {
+        ...state,
+        tasks: state.tasks.map((task, index) =>
+          index === action.payload ? { ...task, completed: !task.completed } : task
+        ),
       };
     default:
       return state;
   }
 };
 
-export default rootReducer;
+export default taskReducer;

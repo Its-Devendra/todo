@@ -1,16 +1,38 @@
 .task-list {
-    margin-top: 20px;
-  }
-  
-  .task-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
-  }
-  
-  .task-item button {
-    margin-left: 10px;
-  }
-  
+  margin-top: 20px;
+}
+
+.task-list .MuiTextField-root {
+  margin-bottom: 15px;
+}
+
+.task-list .MuiList-root {
+  width: 100%;
+}
+
+.task-list .MuiListItem-root {
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.task-list .MuiListItemText-root {
+  flex: 1;
+}
+
+.task-list .MuiTypography-body2 {
+  font-size: 14px;
+}
+
+.task-list .MuiTypography-subtitle2 {
+  font-size: 12px;
+  color: #666;
+}
+
+.task-list .MuiIconButton-root {
+  color: #f44336;
+}
+
+.completed {
+  text-decoration: line-through;
+  opacity: 0.5; 
+}

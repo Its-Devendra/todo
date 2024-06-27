@@ -8,7 +8,13 @@ export const deleteTask = (index) => ({
   payload: index,
 });
 
-export const editTask = (index) => ({
-  type: 'EDIT_TASK',
+export const toggleTask = (index) => ({
+  type: 'TOGGLE_TASK',
   payload: index,
+});
+
+
+export const editTask = (updatedTask) => ({
+  type: 'EDIT_TASK',
+  payload: updatedTask,
 });
